@@ -1,0 +1,291 @@
+/* ---------- Tokens ---------- */
+:root {
+  --esmeralda: #12362a;
+  --esmeralda-2: #1f4e3c;
+  --papel: #f4e9cf;
+  --tarjeta: #fbf3de;
+  --tinta: #2a1f14;
+  --vino: #7a2436;
+  --vino-2: #9c3247;
+  --oro: #c9a227;
+  --oro-claro: #e4c667;
+  --borde: #d8c295;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 48px 16px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(228, 198, 103, 0.12), transparent 45%),
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.02) 0 2px, transparent 2px 26px),
+    linear-gradient(160deg, var(--esmeralda) 0%, #0b241c 100%);
+  color: var(--tinta);
+  font-family: "Karla", sans-serif;
+  line-height: 1.5;
+}
+
+/* ---------- Tarjeta contenedora (estilo libro antiguo) ---------- */
+.tarjeta {
+  position: relative;
+  max-width: 620px;
+  margin: 0 auto;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.03), transparent 12%),
+    var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  padding: 40px 40px 40px 46px;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+}
+
+/* lomo del libro */
+.tarjeta::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 14px;
+  background: linear-gradient(90deg, var(--vino), var(--vino-2));
+  border-radius: 4px 0 0 4px;
+  box-shadow: inset -2px 0 4px rgba(0,0,0,0.25);
+}
+
+/* esquinas doradas ornamentales */
+.tarjeta::after {
+  content: "";
+  position: absolute;
+  inset: 10px;
+  left: 24px;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* cinta de socio */
+.cinta {
+  position: absolute;
+  top: 22px;
+  right: -8px;
+  background: linear-gradient(120deg, var(--vino), var(--vino-2));
+  color: var(--oro-claro);
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  padding: 6px 22px 6px 16px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
+  clip-path: polygon(0 0, 100% 0, 88% 50%, 100% 100%, 0 100%);
+}
+
+.encabezado { margin-bottom: 4px; position: relative; z-index: 1; }
+
+.sello {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  letter-spacing: 0.4px;
+  color: var(--oro);
+  border: 1px solid var(--oro);
+  border-radius: 2px;
+}
+
+.encabezado h1 {
+  font-family: "Lora", serif;
+  font-weight: 600;
+  font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+  line-height: 1.2;
+  margin: 0 0 14px;
+  color: var(--esmeralda);
+}
+
+.encabezado h1::first-letter {
+  font-size: 1.5em;
+  color: var(--vino);
+}
+
+.encabezado p {
+  margin: 0 0 24px;
+  color: #5c4a2f;
+  font-size: 0.97rem;
+  max-width: 46ch;
+}
+
+/* ---------- Fieldsets ---------- */
+fieldset {
+  border: none;
+  border-top: 1px solid var(--borde);
+  padding: 22px 0 6px;
+  margin: 0;
+  position: relative;
+}
+
+fieldset:first-of-type { border-top: none; }
+
+fieldset:not(:first-of-type)::before {
+  content: "\2766";
+  position: absolute;
+  top: -11px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--tarjeta);
+  padding: 0 10px;
+  color: var(--oro);
+  font-size: 0.9rem;
+}
+
+legend {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.08rem;
+  color: var(--vino);
+  padding: 0;
+}
+
+/* ---------- Campos ---------- */
+.campo {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  align-items: center;
+  column-gap: 14px;
+  margin: 14px 0;
+}
+
+.campo label { font-size: 0.92rem; color: #4a3c28; }
+
+input, output {
+  font-family: "Karla", sans-serif;
+  font-size: 0.95rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+input[type="number"],
+input[type="search"],
+input[type="url"],
+input[type="file"] {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--borde);
+  border-radius: 2px;
+  background: #fffcf2;
+  color: var(--tinta);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:hover { border-color: var(--oro); }
+
+input:focus-visible {
+  outline: none;
+  border-color: var(--vino);
+  box-shadow: 0 0 0 3px rgba(122, 36, 54, 0.15);
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--vino);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--vino);
+  width: 16px;
+  height: 16px;
+}
+
+.campo output {
+  font-weight: 700;
+  color: var(--vino);
+}
+
+/* ---------- Radios y checkboxes ---------- */
+.grupo-titulo {
+  margin: 18px 0 6px;
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: var(--esmeralda-2);
+}
+
+.inline-group {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  transition: background 0.15s ease;
+}
+
+.inline-group:hover { background: rgba(201, 162, 39, 0.08); }
+
+.inline-group label { font-size: 0.92rem; }
+
+/* ---------- Botones ---------- */
+.buttons-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid var(--borde);
+}
+
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  padding: 11px 20px;
+  border-radius: 2px;
+  border: 1px solid transparent;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  letter-spacing: 0.2px;
+}
+
+input[type="button"] {
+  background: transparent;
+  border-color: var(--oro);
+  color: #8a6d1a;
+}
+input[type="button"]:hover { background: rgba(201, 162, 39, 0.12); }
+
+input[type="reset"] {
+  background: transparent;
+  border-color: var(--borde);
+  color: #7a6d5b;
+}
+input[type="reset"]:hover { background: rgba(0,0,0,0.04); }
+
+input[type="submit"] {
+  background: linear-gradient(120deg, var(--vino), var(--vino-2));
+  color: var(--oro-claro);
+  box-shadow: 0 10px 22px rgba(122, 36, 54, 0.4);
+}
+input[type="submit"]:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(122, 36, 54, 0.5);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 560px) {
+  body { padding: 28px 12px; }
+  .tarjeta { padding: 30px 22px 30px 30px; }
+  .cinta { right: -6px; font-size: 0.78rem; }
+  .campo {
+    grid-template-columns: 1fr;
+    row-gap: 5px;
+  }
+  .buttons-group { justify-content: stretch; }
+  .buttons-group input { flex: 1; }
+}

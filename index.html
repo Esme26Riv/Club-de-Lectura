@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilo.css">
+    <title>Club de Lectura "Entre Líneas"</title>
+</head>
+<body>
+    <div class="tarjeta">
+        <header class="encabezado">
+            <p class="sello">Ficha de socio</p>
+            <h1>Club de Lectura "Entre Líneas"</h1>
+            <p>Únete y recibe recomendaciones, encuentros mensuales y tu credencial de socio.</p>
+        </header>
+
+        <form action="#" method="post">
+            <input type="hidden" name="codigo_referido" value="CLUB2026">
+
+            <fieldset>
+                <legend>Datos personales</legend>
+
+                <div class="campo">
+                    <label for="nombre_socio">Nombre completo:</label>
+                    <input type="text" id="nombre_socio" name="nombre_socio" placeholder="Marisol Ibarra" minlength="3" maxlength="60" required>
+                </div>
+
+                <div class="campo">
+                    <label for="nacimiento">Fecha de nacimiento:</label>
+                    <input type="date" id="nacimiento" name="nacimiento" required>
+                </div>
+
+                <div class="campo">
+                    <label for="correo_socio">Correo electrónico:</label>
+                    <input type="email" id="correo_socio" name="correo_socio" placeholder="correo@ejemplo.com" required>
+                </div>
+
+                <div class="campo">
+                    <label for="clave_socio">Contraseña de tu cuenta:</label>
+                    <input type="password" id="clave_socio" name="clave_socio" minlength="8" title="Mínimo 8 caracteres" required>
+                </div>
+
+                <div class="campo">
+                    <label for="tel_socio">Teléfono de contacto:</label>
+                    <input type="tel" id="tel_socio" name="tel_socio" placeholder="656 588 1345">
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Preferencias de lectura</legend>
+
+                <div class="campo">
+                    <label for="buscar_libro">Busca un libro o autor de referencia:</label>
+                    <input type="search" id="buscar_libro" name="buscar_libro" placeholder="Ej. Isabel Allende">
+                </div>
+
+                <p class="grupo-titulo">Género favorito:</p>
+                <div class="inline-group"><input type="radio" id="genero_novela" name="genero" value="novela" checked><label for="genero_novela">Novela</label></div>
+                <div class="inline-group"><input type="radio" id="genero_ciencia" name="genero" value="ciencia-ficcion"><label for="genero_ciencia">Ciencia ficción</label></div>
+                <div class="inline-group"><input type="radio" id="genero_poesia" name="genero" value="poesia"><label for="genero_poesia">Poesía</label></div>
+                <div class="inline-group"><input type="radio" id="genero_ensayo" name="genero" value="ensayo"><label for="genero_ensayo">Ensayo</label></div>
+
+                <p class="grupo-titulo">¿En qué formatos te gusta leer?</p>
+                <div class="inline-group"><input type="checkbox" id="formato_fisico" name="formatos" value="fisico" checked><label for="formato_fisico">Libro físico</label></div>
+                <div class="inline-group"><input type="checkbox" id="formato_digital" name="formatos" value="digital"><label for="formato_digital">E-book</label></div>
+                <div class="inline-group"><input type="checkbox" id="formato_audio" name="formatos" value="audiolibro"><label for="formato_audio">Audiolibro</label></div>
+
+                <div class="campo">
+                    <label for="libros_mes">Libros que planeas leer al mes:</label>
+                    <input type="number" id="libros_mes" name="libros_mes" min="1" max="15" value="2">
+                </div>
+
+                <div class="campo">
+                    <label for="presupuesto_libros">Presupuesto mensual para libros:</label>
+                    <input type="range" id="presupuesto_libros" name="presupuesto_libros" min="100" max="1500" step="50" value="400" oninput="this.nextElementSibling.value='$' + this.value">
+                    <output for="presupuesto_libros">$400</output>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Personaliza tu credencial</legend>
+
+                <div class="campo">
+                    <label for="color_marcapaginas">Color de tu marcapáginas digital:</label>
+                    <input type="color" id="color_marcapaginas" name="color_marcapaginas" value="#7a2e2e">
+                </div>
+
+                <div class="campo">
+                    <label for="foto_socio">Sube una foto para tu credencial:</label>
+                    <input type="file" id="foto_socio" name="foto_socio" accept="image/*">
+                </div>
+
+                <div class="campo">
+                    <label for="blog_socio">Enlace a tu blog o red social literaria:</label>
+                    <input type="url" id="blog_socio" name="blog_socio" placeholder="https://tu-blog-literario.com">
+                </div>
+            </fieldset>
+
+            <div class="buttons-group">
+                <input type="button" value="Vista previa de credencial" onclick="alert('Generando vista previa de tu credencial de socio');">
+                <input type="reset" value="Borrar formulario">
+                <input type="submit" value="Inscribirme al club">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
